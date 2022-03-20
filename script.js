@@ -1,66 +1,43 @@
-const user = userInput => {
+const choices = ['rock', 'paper', 'scissors']
+
+function game() {
+    play()
+};
+
+function playRound() {
+    const userSelection = user;
+    const compSelection = comp;
+}
+
+function user() {
+    let userInput = prompt('Type rock, paper, or scissors')
+    while (input == null){
+        input = prompt('Error! Choose rock, paper, or scissors.')
+    }
     userInput = userInput.toLowerCase();
     if(userInput === 'rock' || userInput === 'paper' || userInput === 'scissors'){
         return userInput
     } else{
-        console.log('Error! Choose rock, paper, or scissors.')
+       console.log('Error! Choose rock, paper, or scissors.')
     }
 };
 
 function comp() {
-    switch (Math.floor(Math.random()*3)) {
-        case 0:
-            return 'rock';
-        case 1:
-            return 'paper';
-        case 2: 
-            return 'scissors';
-    }
+    return choices[Math.floor(Math.random()*3)]
 };
 
-function winner(user, comp) {
-    if(user === comp){
+function play(userSelection, compSelection) {
+    if(userSelection === compSelection){
         return 'tie!';
     } 
-    if(user === 'rock'){
-        if(comp === 'paper'){
-            return 'computer won!'
-        } else{
-            return 'you won!'
-        }
-    } 
-    if(user === 'paper'){
-        if(comp === 'scissors'){
-            return 'computer won!'
-        } else{
-            return 'you won!'
-        }
-    }
-    if(user === 'scissors'){
-        if(comp === 'rock'){
-            return 'computer won!'
-        } else{
-            return 'you won!'
-        }
+    else if(
+        (userSelection === 'rock' && compSelection === 'paper') || 
+        (userSelection === 'paper' && compSelection === 'scissors') || 
+        (userSelection === 'scissors' && compSelection === 'rock')){
+           return 'you lost!'
+    } else{
+        return 'you won!'
     }
 } 
-
-function play(userChoice, compChoice) {
-    if(userChoice === compChoice){
-        return 'tie!';
-    }
-    else if(
-        userChoice === 'rock' && compChoice === 'paper' ||
-        userChoice === 'paper' && compChoice === 'scissors'||
-        userChoice === 'scissors' && compChoice === 'rock'){
-            return 'computer won!'
-        }
-    else if(
-        userChoice === 'rock' && compChoice === 'scissors' ||
-        userChoice === 'paper' && compChoice === 'rock' ||
-        userChoice === 'scissors' && compChoice === 'paper'){
-            return 'you won!'
-        }
-};
 
 play();
